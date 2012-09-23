@@ -1,0 +1,45 @@
+# backbone-webpy-openid #
+
+OpenID user and login control using Backbone.js and webpy
+
+Started: 2012-09-23
+Author.: ccarey
+
+## Install/Setup ##
+
+Pre-req assumptions: apache2 and mysql-server installed - no further
+apache2 mods
+
+- Install the following packages:
+    - python-mysqldb
+    - python-webpy
+    - python-openid
+    - libapache2-mod-wsgi
+- Set 'AllowOverride All' on the /var/www/ directory in 
+  /etc/apache2/sites-available/default
+- Enable mod rewrite: sudo a2enmod rewrite
+- Link services folder: cd services; sudo ln -s `pwd` /var/www/backbone-webpy-openid-api; cd ..
+- Link web folder: cd web; sudo ln -s `pwd` /var/www/backbone-webpy-openid; cd ..
+- Restart apache: sudo /etc/init.d/apache2 restart
+
+If you wish to run the internal webpy server to test changes for services, you
+will need to enable a proxy or do something else to host the js on the same
+domain/port. To enable proxy in apache with in conjunction with the instruct-
+ions above, follow these steps:
+
+- Enable proxy module and proxy\_http module: sudo a2enmod proxy\_http
+- Add the following to the your apache config (/etc/apache2/sites-available/default)
+
+        ProxyRequests Off
+        <Proxy *>
+                Order deny,allow
+                allow from all
+        </Proxy>
+        <Location /backbone-webpy-openid-api/>
+                ProxyPass http://localhost:8081/
+                ProxyPassReverse http://localhost:8081/
+                SetEnv force-proxy-request-1.0 1
+                SetEnv proxy-nokeepalive 1
+        </Location>
+
+- Restart apache: sudo /etc/init.d/apache2 restart
