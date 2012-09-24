@@ -3,14 +3,14 @@
     <head>
         <title>Book Catalog</title>
 
-        <script type="text/javascript" src="js/lib/jquery.min.js"></script>
-        <script type="text/javascript" src="js/lib/underscore-min.js"></script>
-        <script type="text/javascript" src="js/lib/backbone-min.js"></script>
-        <script type="text/javascript" src="js/lib/ICanHaz.min.js"></script>
+        <script type="text/javascript" src="../js/lib/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/lib/underscore-min.js"></script>
+        <script type="text/javascript" src="../js/lib/backbone-min.js"></script>
+        <script type="text/javascript" src="../js/lib/ICanHaz.min.js"></script>
 
-        <script type="text/javascript" src="js/app/model.js"></script>
-        <script type="text/javascript" src="js/app/view.js"></script>
-        <script type="text/javascript" src="js/app/controller.js"></script>
+        <script type="text/javascript" src="../js/app/model.js"></script>
+        <script type="text/javascript" src="../js/app/view.js"></script>
+        <script type="text/javascript" src="../js/app/controller.js"></script>
         
         <script type="text/html" id="header">
             <div id="header">
@@ -20,4 +20,12 @@
     </head>
     <body>
     </body>
+    
+    <script type="text/javascript">
+            $(document).ready(function() {
+                window.app = AppController.init({});
+                $('body').append(app.view.el);
+                app.initialLoad();
+            });
+    </script>
 </html>
