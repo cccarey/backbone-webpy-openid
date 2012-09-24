@@ -1,7 +1,7 @@
-import web
+import web, config
 
 class root:
-    @web.config.auth.protected()
+    @config.auth.protected()
     def GET(self):
         web.header('Content-Type', 'application/json')
         web.ctx.status = '401'

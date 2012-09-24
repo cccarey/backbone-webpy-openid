@@ -32,7 +32,7 @@ class OpenIDAuth:
                         raise AuthError
                         
                 except (AttributeError, AuthError, SessionExpired):
-                    raise web.seeother("/%s" % config.template.GLOBALS["basedir"])
+                    web.ctx.status = '401'
 
                 return func(iself, *args, **kw)
             return proxyfunc
