@@ -10,9 +10,9 @@ os.environ['REAL_SCRIPT_NAME'] = ''
 
 import web, web.webopenid
 
-import config
+from config import URLS
 
-web_app = web.application(config.URLS, globals())
+web_app = web.application(URLS, globals())
 
 if web.config.get('_session') is None:
     session = web.session.Session(web_app, web.session.DiskStore('sessions'), {'count':0})
@@ -20,8 +20,9 @@ if web.config.get('_session') is None:
 else:
     session = web.config._session
     
+from config import db
 from config.updateDB import UpdateDB
-dbUpdate = UpdateDB(config.db)
+dbUpdate = UpdateDB(db)
     
 if __name__ == "__main__": 
     web_app.run()

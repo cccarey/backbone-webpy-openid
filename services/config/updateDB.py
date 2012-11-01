@@ -53,6 +53,8 @@ class UpdateDB:
                         `id_url` varchar(255),
                         `first_name` varchar(255),
                         `last_name` varchar(255),
+                        `nick_name` varchar(50),
+                        `is_admin` Boolean default false,
                         primary key(`id`)
                     )
                     engine InnoDB;

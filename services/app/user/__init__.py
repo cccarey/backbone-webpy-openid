@@ -1,16 +1,28 @@
-import web, config
+import web, json
+
+from config import *
+from app import *
+
+import models.user
+
+import openid.consumer.consumer
+import openid.store.memstore
+import openid.extensions.ax
+
+session = web.config._session
+openidStore = openid.store.memstore.MemoryStore()
 
 class root:
-    @config.auth.protected()
+    @auth.protected()
     def GET(self):
         web.header('Content-Type', 'application/json')
-        web.ctx.status = '401'
+        # web.ctx.status = '401'
+        return json.dumps(auth.get_session_user())
         
 class logout:
     def GET(self):
         auth.logout()
-        
-        raise web.seeother('/%s' % config.template.GLOBALS["basedir"])
+        return "{\"success\":\"true\"}"
 
 class openidLoginStart:
     def GET(self):
@@ -78,7 +90,7 @@ class openidLoginComplete:
                 auth.set_session_user(auth_user)
         
         if new_user:
-            raise web.seeother('/%s/profile/edit' % config.template.GLOBALS["basedir"])
+            raise web.redirect(url="http://%s/%s" % (web.ctx.env["HTTP_X_FORWARDED_HOST"], settings["profile.edit"]))
             
-        raise web.seeother('/%s' % config.template.GLOBALS["basedir"])
+        raise web.redirect(url="http://%s/%s" % (web.ctx.env["HTTP_X_FORWARDED_HOST"], settings["app"]))
 

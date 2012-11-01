@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
-        <title>Book Catalog</title>
+        <title>Backbone/webpy/OpenID :: App Page</title>
 
         <script type="text/javascript" src="../js/lib/jquery.min.js"></script>
         <script type="text/javascript" src="../js/lib/underscore-min.js"></script>
@@ -14,7 +14,7 @@
         
         <script type="text/html" id="header">
             <div id="header">
-                <div id="user-tag"><span id="first-name">{{#attributes}}{{firstname}}{{/attributes}}</span></div>
+                <div id="user-tag"><span id="first-name">User: {{#attributes}}{{firstname}}{{/attributes}}</span></div>
             </div>
         </script>
     </head>
@@ -25,7 +25,7 @@
             $(document).ready(function() {
                 window.app = AppController.init({});
                 $('body').append(app.view.el);
-                app.initialLoad();
+                //app.initialLoad();
             });
     </script>
 </html>

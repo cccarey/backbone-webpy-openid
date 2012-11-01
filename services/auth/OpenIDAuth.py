@@ -7,6 +7,7 @@ class AuthError(Exception): pass
 
 class OpenIDAuth:
     def __init__(self, session=None):
+        print "OpenIDAuth __init__"
         self.session = session
     
     def set_session(self, session):
