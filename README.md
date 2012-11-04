@@ -2,6 +2,10 @@
 
 OpenID user and login control using Backbone.js and webpy
 
+This app provides functions for user management and login using backbone.js,
+webpy, and OpenID. It is intended to work as a quickstart for other
+applications. In the future, it may be enhanced to also function as a plugin.
+
 Started: 2012-09-23
 Author.: ccarey
 
