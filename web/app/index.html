@@ -13,11 +13,15 @@
         <script type="text/javascript" src="../js/app/controller.js"></script>
         
         <script type="text/html" id="header_frag">
-            <div id="user-tag"><span id="first-name">User: {{#attributes}}{{first_name}}{{/attributes}}</span></div>
+            <div id="user-tag">
+                <span id="first-name">User: {{first_name}}</span> - 
+                <a id="logout" href="#">logout</a>
+            </div>
         </script>
     </head>
     <body>
         <div id="header"></div>
+        <div id="footer"></div>
     </body>
     
     <script type="text/javascript">

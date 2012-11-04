@@ -8,7 +8,7 @@ var AppModel = Backbone.Model.extend({
         this.user.fetch({
             error: function(model, response) {
                 console.log(response);
-                if (response.status == 401) { window.location = "../"; } 
+                if (response.status == 401) { app.handleUnauthenticated(); } 
             }
         });
     }
