@@ -1,7 +1,7 @@
 var apiBase = "/backbone-webpy-openid-api/";
 
 $(document).ready(function() {
-    $("#sign-in").attr("href","/backbone-webpy-openid-api//login?realm=http://" + window.location.hostname + "&openidEnd=/backbone-webpy-openid-api/loginComplete");
+    $("#sign-in").attr("href", apiBase + "login?realm=http://" + window.location.hostname + "&openidEnd=" + apiBase + "loginComplete");
     $.ajax({
         url: apiBase + "info",
         success: function(data) {
