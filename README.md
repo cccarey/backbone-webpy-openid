@@ -7,7 +7,7 @@ webpy, and OpenID. It is intended to work as a quickstart for other
 applications. In the future, it may be enhanced to also function as a plugin.
 
 Started: 2012-09-23
-Author.: ccarey
+Author.: cccarey
 
 ## Install/Setup ##
 
@@ -19,12 +19,25 @@ apache2 mods
     - python-webpy
     - python-openid
     - libapache2-mod-wsgi
-- Set 'AllowOverride All' on the /var/www/ directory in 
-  /etc/apache2/sites-available/default
-- Enable mod rewrite: sudo a2enmod rewrite
-- Link services folder: cd services; sudo ln -s `pwd` /var/www/backbone-webpy-openid-api; cd ..
-- Link web folder: cd web; sudo ln -s `pwd` /var/www/backbone-webpy-openid; cd ..
-- Restart apache: sudo /etc/init.d/apache2 restart
+
+            sudo apt-get install python-mysqldb python-webpy python-openid libapache2-mod-wsgi
+
+- Set 'AllowOverride All' on the /var/www/ directory in /etc/apache2/sites-available/default
+- Enable mod rewrite:
+
+        sudo a2enmod rewrite
+
+- Link services folder:
+
+        cd services; sudo ln -s `pwd` /var/www/backbone-webpy-openid-api; cd ..
+
+- Link web folder:
+
+        cd web; sudo ln -s `pwd` /var/www/backbone-webpy-openid; cd ..
+
+- Restart apache:
+
+        sudo /etc/init.d/apache2 restart
 
 If you wish to run the internal webpy server to test changes for services, you
 will need to enable a proxy or do something else to host the js on the same
@@ -46,4 +59,16 @@ ions above, follow these steps:
                 SetEnv proxy-nokeepalive 1
         </Location>
 
-- Restart apache: sudo /etc/init.d/apache2 restart
+- Restart apache:
+
+        sudo /etc/init.d/apache2 restart
+
+# Borrowed Code #
+
+OpenAuthID was borrowed from somewhere a few years ago and used in some
+personal (and closed) projects. I believe, based on my delicious.com
+bookmarks, it was borrowed from [Juan-Pablo Scaletti](http://jpscaletti.com),
+but the link is no longer valid for me to verify.
+
+The sign-in buttons come from
+[this project on GitHub](https://github.com/necolas/css3-social-signin-buttons).
