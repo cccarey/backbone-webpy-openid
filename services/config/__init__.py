@@ -7,7 +7,7 @@ settings = {
     "app": "/openid/app",
     "profile.edit": "/openid/app",
     "basedir": "/openid"
-}        
+}
 
 URLS = (
     '/info', 'app.info.root',
