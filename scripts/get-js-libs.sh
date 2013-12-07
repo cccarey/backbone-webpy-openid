@@ -4,7 +4,22 @@ getfile() {
     mv $2 web/js/lib
 }
 
-getfile "http://backbonejs.org/backbone-min.js" "backbone.js"
-getfile "http://documentcloud.github.com/underscore/underscore-min.js" "underscore.js"
-getfile "http://code.jquery.com/jquery.min.js" "jquery.js"
-getfile "https://github.com/andyet/ICanHaz.js/raw/master/ICanHaz.min.js" "ICanHaz.js"
+function process() {
+    while [ ! -z "$1" ]
+    do
+        url="$1"
+        file="$2"
+        echo "Url: $url -> File: $file"
+        getfile $url $file
+
+        shift 2
+    done
+}
+
+files="http://requirejs.org/docs/release/2.1.9/minified/require.js require.js
+https://raw.github.com/requirejs/text/latest/text.js text.js
+http://backbonejs.org/backbone.js backbone.js
+http://underscorejs.org/underscore.js underscore.js
+http://code.jquery.com/jquery-2.0.3.js jquery-2.0.3.js"
+
+process $files
