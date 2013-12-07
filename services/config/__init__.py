@@ -4,8 +4,8 @@ db = web.database(dbn='mysql', user='bwouser', pw='test123', db='bwoapp')
 
 settings = {
     "version": "v2012309",
-    "app": "/openid/app",
-    "profile.edit": "/openid/app",
+    "app": "/openid",
+    "profile.edit": "/openid",
     "basedir": "/openid"
 }
 

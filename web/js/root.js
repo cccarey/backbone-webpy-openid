@@ -1,24 +1,21 @@
-var apiBase = "/backbone-webpy-openid-api/";
+require.config({
+    paths: {
+        jquery: 'lib/jquery-2.0.3',
+        text: 'lib/text'
+    },
 
-$(document).ready(function() {
-    $("#sign-in").attr("href", apiBase + "login?realm=http://" + window.location.hostname + "&openidEnd=" + apiBase + "loginComplete");
-    $.ajax({
-        url: apiBase + "info",
-        success: function(data) {
-            $('#version').html(data.version);
-            $('#version').fadeIn(2000);
-        },
-        error: function(data, status) {
-            console.log("error " + status);
-        }
-    });
-
-    $.ajax({
-        url: apiBase + "user",
-        success: function() { $("#enter").fadeIn(2000); },
-        statusCode: {
-            401: function() { $("#sign-in").fadeIn(2000); }
-        }
-    });
+    shim: {
+        'lib/underscore': { exports: '_' },
+        'lib/backbone': { deps: [ 'jquery', 'lib/underscore' ], exports: 'Backbone' },
+        'lib/handlebars': { exports: 'Handlebars' }
+    }
 });
 
+require([ 'routers' ], function(routers) {
+    'use strict';
+
+    $(document).ready(function() {
+        var router = new routers.OpenIdRouter();
+        Backbone.history.start();
+    });
+});

@@ -1,0 +1,19 @@
+<span id="version">{{#info}}{{#attributes}}{{version}}{{/attributes}}{{/info}}</span>
+<span id="title">{{title}}</span>
+<span id="top-nav"></span>
+{{#user}}
+{{#attributes}}
+<span id="user-info">
+    {{#if id_url}}
+        {{#if nick_name}}
+            <span id="first-name">{{nick_name}}</span>
+        {{else}}
+            <span id="first-name">{{first_name}}</span>
+        {{/if}}
+        | <a id="logout" href="#/logout">logout</a>
+        | <a id="edit" href="#/edit">edit</a>
+    {{/if}}
+</span>
+{{/attributes}}
+{{/user}}
+
