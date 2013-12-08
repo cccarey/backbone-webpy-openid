@@ -60,5 +60,17 @@ class UpdateDB:
                     engine InnoDB;
                     """)
                 
+                '''
+                Session storage
+                '''
+                self.db.query("""
+                    create table if not exists `sessions` (
+                        `session_id` CHAR(128) UNIQUE NOT NULL,
+                        `atime` DATETIME NOT NULL,
+                        `data` TEXT
+                    )
+                    engine InnoDB;
+                    """)
+
                 self.update_version(1)
                 

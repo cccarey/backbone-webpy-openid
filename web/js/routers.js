@@ -27,8 +27,8 @@ define([
             /* --- helper functions --- */
 
             onNoAuth: function() {
-                this.user.clear();
-                this.navigate("login", { trigger: true });
+                if (this && this.user){ this.user.clear(); }
+                window.location = "./#/login";
             },
 
             /* --- router functions --- */
