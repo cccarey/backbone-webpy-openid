@@ -28,6 +28,7 @@ define([
             var title = (this.pageInfo.has("pageTitle") && this.pageInfo.get("pageTitle") != "") ?
                 this.pageInfo.get("app") + " :: " + this.pageInfo.get("pageTitle") :
                 this.pageInfo.get("app");
+            document.title = title;
             var theEl = this.el;
             $(theEl).html(template({ info: this.info, user: this.user, title: title }));
             if (this.pageInfo.has("menuItems")) {
