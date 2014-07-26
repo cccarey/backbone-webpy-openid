@@ -82,6 +82,16 @@ Provides basic application information. Sample:
 
 Returns information about the logged in user
 
+        {
+            "first_name": "Christian", 
+            "last_name": "Carey", 
+            "user_id": 1, 
+            "nick_name": null, 
+            "user_login": "...@gmail.com", 
+            "id_url": "https://www.google.com/accounts/o8/id?id=...", 
+            "is_admin": 0
+        }
+
 ### /logout - GET
 
 Logs the user out of the application
