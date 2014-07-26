@@ -2,7 +2,7 @@ import web, auth
 import json, time, datetime, decimal
 from config import *
 
-auth = auth.OpenIDAuth(web.config._session)
+auth = auth.OpenIDAuth(web.web_session)
 
 def set_headers(allow_cache=False):
     web.header('Content-Type', 'application/json')

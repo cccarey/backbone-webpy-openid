@@ -9,7 +9,7 @@ import openid.consumer.consumer
 import openid.store.memstore
 import openid.extensions.ax
 
-session = web.config._session
+session = web.web_session
 openidStore = openid.store.memstore.MemoryStore()
 
 class root:

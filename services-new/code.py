@@ -18,11 +18,11 @@ from config import db
 from config.updateDB import UpdateDB
 dbUpdate = UpdateDB(db)
 
-if web.config.get('_session') is None:
+if not hasattr(web, "web_session"):
     session = web.session.Session(web_app, web.session.DBStore(db, 'sessions'), {'count':0})
-    web.config._session = session
+    web.web_session = session
 else:
-    session = web.config._session
+    session = web.web_session
 
 if __name__ == "__main__":
     web_app.run()
