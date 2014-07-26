@@ -14,15 +14,14 @@ from config import URLS
 
 web_app = web.application(URLS, globals())
 
-from config import db
+from config import db, create_web_session, create_db_session, load_sqla
 from config.updateDB import UpdateDB
 dbUpdate = UpdateDB(db)
 
-if not hasattr(web, "web_session"):
-    session = web.session.Session(web_app, web.session.DBStore(db, 'sessions'), {'count':0})
-    web.web_session = session
-else:
-    session = web.web_session
+session = create_web_session(web_app)
+db_session = create_db_session()
+
+web_app.add_processor(load_sqla)
 
 if __name__ == "__main__":
     web_app.run()
