@@ -22,7 +22,9 @@ apache2 mods
     - python-sqlalchemy
     - libapache2-mod-wsgi
 
-            sudo apt-get install python-mysqldb python-webpy python-openid libapache2-mod-wsgi python-requests-oauthlib python-sqlalchemy
+            sudo apt-get install python-mysqldb python-webpy \
+            python-openid libapache2-mod-wsgi python-requests-oauthlib \
+            python-sqlalchemy
 
 - Set 'AllowOverride All' on the /var/www/ directory in /etc/apache2/sites-available/default
 - Enable mod rewrite:
