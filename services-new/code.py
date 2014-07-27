@@ -14,10 +14,13 @@ from config import URLS
 
 web_app = web.application(URLS, globals())
 
-from config import db, create_web_session, create_db_session, load_sqla
+from config import db, create_web_session, create_db_session, load_sqla, setup_social_auth, \
+				   migrate_model
 from config.updateDB import UpdateDB
 dbUpdate = UpdateDB(db)
 
+setup_social_auth()
+migrate_model()
 session = create_web_session(web_app)
 db_session = create_db_session()
 

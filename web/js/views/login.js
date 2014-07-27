@@ -22,11 +22,7 @@ define([
         
         render: function() {
             $(this.el).html(template());
-            $("#sign-in", this.el).attr("href", 
-                config.apiBase + "login?realm=http://" + 
-                window.location.hostname + "&openidEnd=" + 
-                config.apiBase + "loginComplete"
-            );    
+            $("#sign-in", this.el).attr("href", config.apiBase + "login/google-oauth2");
         }
     });
 });

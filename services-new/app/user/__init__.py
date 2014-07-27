@@ -24,6 +24,8 @@ class logout:
         auth.logout()
         return "{\"success\":\"true\"}"
 
+# TODO: no longer necessary with new login
+'''
 class openidLoginStart:
     def GET(self):
         i = web.input()
@@ -94,3 +96,4 @@ class openidLoginComplete:
             
         raise web.redirect(url="http://%s/%s" % (web.ctx.env["HTTP_X_FORWARDED_HOST"], settings["app"]))
 
+'''

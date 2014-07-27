@@ -1,6 +1,7 @@
 import web, auth
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
+from social.utils import setting_name
 from social.apps.webpy_app import app as social_app
 
 db_settings = {
@@ -38,11 +39,22 @@ settings = {
 URLS = (
     '/info', 'app.info.root',
     '/user', 'app.user.root',
-    '/login', 'app.user.openidLoginStart',
-    '/loginComplete', 'app.user.openidLoginComplete',
+    # '/login', 'app.user.openidLoginStart',
+    # '/loginComplete', 'app.user.openidLoginComplete',
     '/logout', 'app.user.logout',
     '', social_app.app_social
 )
+
+def setup_social_auth():
+	web.config[setting_name('GOOGLE_OAUTH2_KEY')] = '1053248247531-c059hr03t3v6sr7tk9451kbn9kasu2ve.apps.googleusercontent.com'
+	web.config[setting_name('GOOGLE_OAUTH2_SECRET')] = 'Zoq6dOZbBzPaQ-r4d-u1kA9h'
+	web.config[setting_name('USER_MODEL')] = 'models.user.User'
+	web.config[setting_name('AUTHENTICATION_BACKENDS')] = (
+	    'social.backends.google.GoogleOAuth2',
+	    )
+	# TODO: change following two lines on deployment
+	web.config[setting_name('LOGIN_REDIRECT_URL')] = 'http://localhost/openid'
+	web.config[setting_name('SANITIZE_REDIRECTS')] = False
 
 def create_web_session(web_app):
 	# Test is a workaround to prevent debug reloader from creating a second version
@@ -64,6 +76,13 @@ def create_db_session():
 		web.db_session = Session()
 
 	return web.db_session
+
+def migrate_model():
+	from models.user import Base
+	from social.apps.webpy_app.models import SocialBase
+
+	Base.metadata.create_all(engine)
+	SocialBase.metadata.create_all(engine)
 
 def load_sqla(handler):
     web.ctx.orm = scoped_session(sessionmaker(bind=engine))

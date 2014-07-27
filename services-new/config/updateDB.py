@@ -46,6 +46,7 @@ class UpdateDB:
                 '''
                 Users
                 '''
+                '''
                 self.db.query("""
                     create table if not exists `users` (
                        `id` int not null auto_increment,
@@ -59,6 +60,7 @@ class UpdateDB:
                     )
                     engine InnoDB;
                     """)
+                '''
                 
                 '''
                 Session storage
