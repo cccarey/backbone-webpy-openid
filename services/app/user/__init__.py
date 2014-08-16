@@ -18,7 +18,7 @@ class root:
     def GET(self):
         web.header('Content-Type', 'application/json')
         user = web.db_session.query(models.user.User).get(web.web_session.user_id)
-        return AlchemyToJSON(user)
+        return user.toJSON()
 
     @auth.protected()
     def PUT(self):
@@ -28,7 +28,7 @@ class root:
         web.db_session.merge(update_user)
         web.db_session.commit()
         
-        return AlchemyToJSON(update_user)
+        return update_user.toJSON()
 
 class logout:
     def GET(self):
