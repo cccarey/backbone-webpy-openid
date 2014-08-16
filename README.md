@@ -9,12 +9,6 @@ applications. In the future, it may be enhanced to also function as a plugin.
 Started: 2012-09-23
 Author.: cccarey
 
-## TODO
-
-- Check web session data in info call
-- Add edit user logic
-- Add new user handling
-
 ## Install/Setup
 
 Pre-requisites: apache2 and mysql-server installed - no further
