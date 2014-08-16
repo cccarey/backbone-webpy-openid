@@ -1,9 +1,9 @@
-import web, config
+import web, json, config
 
 class root:
     def GET(self):
         web.header('Content-Type', 'application/json')
-        return "{ \"version\": \"%s\", \"data\": \"%s\" }" % (
-        	config.settings["version"], 
-        	web.web_session._data
-        	)
+        return json.dumps({
+        	"version": config.settings["version"], 
+        	"data":web.web_session._data.__dict__
+        	})
