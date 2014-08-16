@@ -9,6 +9,12 @@ applications. In the future, it may be enhanced to also function as a plugin.
 Started: 2012-09-23
 Author.: cccarey
 
+## TODO
+
+- Check web session data in info call
+- Add edit user logic
+- Add new user handling
+
 ## Install/Setup
 
 Pre-requisites: apache2 and mysql-server installed - no further
@@ -97,11 +103,6 @@ Returns information about the logged in user
 Logs the user out of the application
 
 # Borrowed Code
-
-OpenAuthID was borrowed from somewhere a few years ago and used in some
-personal (and closed) projects. I believe, based on my delicious.com
-bookmarks, it was borrowed from [Juan-Pablo Scaletti](http://jpscaletti.com),
-but the link is no longer valid for me to verify.
 
 The sign-in buttons come from
 [this project on GitHub](https://github.com/necolas/css3-social-signin-buttons).

@@ -39,8 +39,6 @@ settings = {
 URLS = (
     '/info', 'app.info.root',
     '/user', 'app.user.root',
-    # '/login', 'app.user.openidLoginStart',
-    # '/loginComplete', 'app.user.openidLoginComplete',
     '/logout', 'app.user.logout',
     '', social_app.app_social
 )

@@ -2,7 +2,12 @@ import web, auth
 import json, time, datetime, decimal
 from config import *
 
-auth = auth.OpenIDAuth(web.web_session)
+def AlchemyToJSON(item):
+    d = {}
+    for column in item.__table__.columns:
+        d[column.name] = str(getattr(item, column.name))
+
+    return d
 
 def set_headers(allow_cache=False):
     web.header('Content-Type', 'application/json')
