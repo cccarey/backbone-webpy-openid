@@ -1,4 +1,4 @@
-import web, json
+import web
 
 from config import *
 from app import *
