@@ -13,7 +13,8 @@ define([
             routes: {
                 '' : 'showUser',
                 'logout' : 'processLogout',
-                'login' : 'showLogin'
+                'login' : 'showLogin',
+                'edit' : 'showUserEdit'
             },
 
             initialize: function() {
@@ -44,6 +45,10 @@ define([
 
             showUser: function() {
                 this.mainLayout.show(new views.userPage({ model: this.user, pageInfo: this.pageInfo }));
+            },
+
+            showUserEdit: function() {
+                this.mainLayout.show(new views.userEditPage({ model: this.user, pageInfo: this.pageInfo }));
             },
 
             showLogin: function() {

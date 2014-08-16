@@ -5,9 +5,15 @@ from config import *
 def AlchemyToJSON(item):
     d = {}
     for column in item.__table__.columns:
-        d[column.name] = str(getattr(item, column.name))
+        value = getattr(item, column.name)
+        if isinstance(value, bool) or \
+                isinstance(value, long) or \
+                isinstance(value, datetime.datetime):
+            d[column.name] = value
+        else:
+            d[column.name] = str(value)
 
-    return d
+    return json.dumps(d)
 
 def set_headers(allow_cache=False):
     web.header('Content-Type', 'application/json')
