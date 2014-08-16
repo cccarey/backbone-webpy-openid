@@ -16,11 +16,11 @@ function process() {
     done
 }
 
-files="http://requirejs.org/docs/release/2.1.9/minified require.js require.js
+files="http://requirejs.org/docs/release/2.1.14/minified require.js require.js
 https://raw.github.com/requirejs/text/latest text.js text.js
 http://backbonejs.org backbone.js backbone.js
 http://underscorejs.org underscore.js underscore.js
-http://code.jquery.com jquery-2.0.3.js jquery-2.0.3.js
-http://builds.handlebarsjs.com.s3.amazonaws.com handlebars-v1.1.2.js handlebars.js"
+http://code.jquery.com jquery-2.1.1.js jquery-2.1.1.js
+http://builds.handlebarsjs.com.s3.amazonaws.com handlebars-v1.3.0.js handlebars.js"
 
 process $files
