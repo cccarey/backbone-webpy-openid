@@ -16,6 +16,5 @@ cp -r services "$TARGET"
 
 cp -r web "$TARGET"
 
-rm -rf "$TARGET"/services/sessions
 rm -f `find "$TARGET" -name "*.pyc"`
 
