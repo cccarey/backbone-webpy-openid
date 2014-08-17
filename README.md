@@ -6,9 +6,9 @@ This app provides functions for user management and login using backbone.js,
 webpy, and [python-social-auth](https://github.com/omab/python-social-auth).
 It is intended to work as a quickstart for other applications.
 
-Started: 2012-09-23
-Last Update: 2014-08-16
-Author.: cccarey
+Started: 2012-09-23  
+Last Update: 2014-08-16  
+Author.: cccarey  
 
 ## Install/Setup
 
