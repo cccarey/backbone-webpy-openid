@@ -100,7 +100,7 @@ Returns information about the logged in user
             "first_name": "Christian", 
             "last_name": "Carey", 
             "nick_name": "Chris", 
-            "email": "christian.carey@gmail.com", 
+            "email": "....", 
             "active": true, 
             "fullname": "Christian Carey", 
             "password": "", 
