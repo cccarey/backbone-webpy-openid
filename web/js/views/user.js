@@ -29,10 +29,7 @@ define([
         },
 
         handleBackClick: function(event) {
-            if (event) {
-                event.preventDefault();
-            }
-            window.history.back();
+            this.goBack();
         }
     });
 });
