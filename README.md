@@ -8,7 +8,7 @@ It is intended to work as a quickstart for other applications.
 
 Started: 2012-09-23  
 Last Update: 2014-08-16  
-Author.: cccarey  
+Author: cccarey  
 
 ## Install/Setup
 
@@ -23,9 +23,11 @@ apache2 mods
     - python-sqlalchemy
     - libapache2-mod-wsgi
 
+
             sudo apt-get install python-mysqldb python-webpy \
             python-openid libapache2-mod-wsgi python-requests-oauthlib \
             python-sqlalchemy
+
 
 - Set 'AllowOverride All' on the /var/www/ directory in /etc/apache2/sites-available/default
 - Enable mod rewrite:
