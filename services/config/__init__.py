@@ -51,6 +51,7 @@ def setup_social_auth():
 	    'social.backends.google.GoogleOAuth2',
 	    )
 	# TODO: change following two lines on deployment
+	web.config[setting_name('NEW_USER_REDIRECT_URL')] = 'http://localhost/openid/#/edit'
 	web.config[setting_name('LOGIN_REDIRECT_URL')] = 'http://localhost/openid'
 	web.config[setting_name('SANITIZE_REDIRECTS')] = False
 

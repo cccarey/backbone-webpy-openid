@@ -22,6 +22,7 @@ define([
         initialize: function(args) {
             args.pageInfo.set("pageTitle", "Edit Profile");
             args.pageInfo.unset("menuItems");
+            this.listenTo(this.model, "change", this.render);
         },
         
         render: function() {
