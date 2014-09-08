@@ -44,8 +44,8 @@ URLS = (
 )
 
 def setup_social_auth():
-	web.config[setting_name('GOOGLE_OAUTH2_KEY')] = '1053248247531-c059hr03t3v6sr7tk9451kbn9kasu2ve.apps.googleusercontent.com'
-	web.config[setting_name('GOOGLE_OAUTH2_SECRET')] = 'Zoq6dOZbBzPaQ-r4d-u1kA9h'
+	web.config[setting_name('GOOGLE_OAUTH2_KEY')] = 'YOUR_KEY_HERE'
+	web.config[setting_name('GOOGLE_OAUTH2_SECRET')] = 'YOUR_SECRET_HERE'
 	web.config[setting_name('USER_MODEL')] = 'models.user.User'
 	web.config[setting_name('AUTHENTICATION_BACKENDS')] = (
 	    'social.backends.google.GoogleOAuth2',
