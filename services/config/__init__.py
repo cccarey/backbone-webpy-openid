@@ -1,4 +1,5 @@
 import web, auth
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from social.utils import setting_name
@@ -43,16 +44,19 @@ URLS = (
     '', social_app.app_social
 )
 
+oauth2_key = os.getenv('GOOGLE_OAUTH2_KEY', 'key not set')
+oauth2_secret = os.getenv('GOOGLE_OAUTH2_SECRET', 'secret not set')
+
 def setup_social_auth():
-	web.config[setting_name('GOOGLE_OAUTH2_KEY')] = 'YOUR_KEY_HERE'
-	web.config[setting_name('GOOGLE_OAUTH2_SECRET')] = 'YOUR_SECRET_HERE'
+	web.config[setting_name('GOOGLE_OAUTH2_KEY')] = oauth2_key
+	web.config[setting_name('GOOGLE_OAUTH2_SECRET')] = oauth2_secret
 	web.config[setting_name('USER_MODEL')] = 'models.user.User'
 	web.config[setting_name('AUTHENTICATION_BACKENDS')] = (
 	    'social.backends.google.GoogleOAuth2',
 	    )
 	# TODO: change following two lines on deployment
-	web.config[setting_name('NEW_USER_REDIRECT_URL')] = 'http://localhost/openid/#/edit'
-	web.config[setting_name('LOGIN_REDIRECT_URL')] = 'http://localhost/openid'
+	web.config[setting_name('NEW_USER_REDIRECT_URL')] = 'http://localhost:8080/openid/#/edit'
+	web.config[setting_name('LOGIN_REDIRECT_URL')] = 'http://localhost:8080/openid'
 	web.config[setting_name('SANITIZE_REDIRECTS')] = False
 
 def create_web_session(web_app):

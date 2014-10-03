@@ -2,41 +2,34 @@
 
 OpenID user and login control using Backbone.js and webpy
 
-This app provides functions for user management and login using backbone.js,
-webpy, and [python-social-auth](https://github.com/omab/python-social-auth).
-It is intended to work as a quickstart for other applications.
+This app provides functions for user management and login using backbone.js, webpy, and [python-social-auth](https://github.com/omab/python-social-auth). It is intended to work as a quickstart for other applications.
 
 Started: 2012-09-23  
 Last Update: 2014-08-16  
 Author: cccarey  
 
-## Install/Setup
+## Setting up for Development
 
-Pre-requisites: apache2 and mysql-server installed - no further
-apache2 mods
+These notes leverage Apache as a web server and assume Apache and MySQL Server is installed and configured. If you would like to use a different web server, replace commands as necessary.
 
-- Install the following packages:
+- Install the following packages
     - python-mysqldb
     - python-webpy
     - python-openid
     - python-requests-oauthlib
     - python-sqlalchemy
-    - libapache2-mod-wsgi
-
 
             sudo apt-get install python-mysqldb python-webpy \
-            python-openid libapache2-mod-wsgi python-requests-oauthlib \
+            python-openid python-requests-oauthlib \
             python-sqlalchemy
 
+- Enable proxy\_http module:
 
-- Set 'AllowOverride All' on the /var/www/ directory in /etc/apache2/sites-available/default
-- Enable mod rewrite:
+        sudo a2enmod proxy\_http
 
-        sudo a2enmod rewrite
+- Add the reverse proxy config to apache (if you are going to use a different port, edit the file and change it in the appropriate places):
 
-- Link services folder:
-
-        cd services; sudo ln -s `pwd` /var/www/backbone-webpy-openid-api; cd ..
+        sudo ln -s `pwd`/reverse_proxy.conf /etc/apache2/sites-enabled/b-w-openid-rev-proxy.conf
 
 - Link web folder:
 
@@ -46,28 +39,35 @@ apache2 mods
 
         sudo service apache2 restart
 
-If you wish to run the internal webpy server to test changes for services, you
-will need to enable a proxy or do something else to host the js on the same
-domain/port. To enable proxy in apache with in conjunction with the instruct-
-ions above, follow these steps:
+- Finally, create the shell script `services/setgoogleenv.sh` with your Google OAuth2 key and secret to start the webpy development server for services with the following contents:
 
-- Enable proxy module and proxy\_http module:
+        #!/usr/bin/env bash
 
-        sudo a2enmod proxy\_http
+        GOOGLE_OAUTH2_KEY="REPLACE_WITH_YOUR_KEY"
+        GOOGLE_OAUTH2_SECRET="REPLACE_WITH_YOUR_SECRET"
 
-- Add the following to the your apache config (/etc/apache2/sites-available/default)
+        export GOOGLE_OAUTH2_KEY
+        export GOOGLE_OAUTH2_SECRET
 
-        ProxyRequests Off
-        <Proxy *>
-                Order deny,allow
-                allow from all
-        </Proxy>
-        <Location /backbone-webpy-openid-api/>
-                ProxyPass http://localhost:8081/
-                ProxyPassReverse http://localhost:8081/
-                SetEnv force-proxy-request-1.0 1
-                SetEnv proxy-nokeepalive 1
-        </Location>
+        ./code.py 8082
+
+## Install/Setup
+
+*Note:* these do not work with the default configuration of Apache on Ubuntu 14.04+. In addition, the environment variables for the Google OAuth2 key and secret will need to be incorporated into this setup. To be updated...
+
+In order to setup the services as a wsgi app from within Apache, add the following.
+
+- Install the following packages:
+    - libapache2-mod-wsgi
+
+- Set 'AllowOverride All' on the /var/www/ directory in /etc/apache2/sites-available/default
+- Enable mod rewrite:
+
+        sudo a2enmod rewrite
+
+- Link services folder:
+
+        cd services; sudo ln -s `pwd` /var/www/backbone-webpy-openid-api; cd ..
 
 - Restart apache:
 
