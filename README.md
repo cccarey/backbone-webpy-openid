@@ -12,20 +12,25 @@ Author: cccarey
 
 These notes leverage Apache as a web server and assume Apache and MySQL Server is installed and configured. If you would like to use a different web server, replace commands as necessary.
 
-- Install the following packages
-    - python-mysqldb
-    - python-webpy
-    - python-openid
-    - python-requests-oauthlib
-    - python-sqlalchemy
+- Install PIP, build dependencies, create a python virtual environment, and activate it
 
-            sudo apt-get install python-mysqldb python-webpy \
-            python-openid python-requests-oauthlib \
-            python-sqlalchemy
+        sudo apt-get install python-pip libmysqlclient-dev python-dev
+        sudo pip install virtualenv
+        virtualenv env
+        source env/bin/activate
+
+- Install python packages using pip
+
+        pip install mysql-python
+        pip install web.py
+        pip install python-openid
+        pip install requests-oauthlib
+        pip install python-social-auth
+        pip install sqlalchemy
 
 - Enable proxy\_http module:
 
-        sudo a2enmod proxy\_http
+        sudo a2enmod proxy_http
 
 - Add the reverse proxy config to apache (if you are going to use a different port, edit the file and change it in the appropriate places):
 
@@ -33,7 +38,7 @@ These notes leverage Apache as a web server and assume Apache and MySQL Server i
 
 - Link web folder:
 
-        cd web; sudo ln -s `pwd` /var/www/backbone-webpy-openid; cd ..
+        cd web; sudo ln -s `pwd` /var/www/html/openid; cd ..
 
 - Restart apache:
 
@@ -57,8 +62,17 @@ These notes leverage Apache as a web server and assume Apache and MySQL Server i
 
 In order to setup the services as a wsgi app from within Apache, add the following.
 
-- Install the following packages:
+- Install the following packages
+    - python-mysqldb
+    - python-webpy
+    - python-openid
+    - python-requests-oauthlib
+    - python-sqlalchemy
     - libapache2-mod-wsgi
+
+            sudo apt-get install python-mysqldb python-webpy \
+            python-openid python-requests-oauthlib \
+            python-sqlalchemy libapache2-mod-wsgi
 
 - Set 'AllowOverride All' on the /var/www/ directory in /etc/apache2/sites-available/default
 - Enable mod rewrite:
