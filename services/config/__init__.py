@@ -3,7 +3,7 @@ import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from social.utils import setting_name
-from social.apps.webpy_app import app as social_app
+from app import social_app
 
 db_settings = {
 	"drv_name": "mysql",

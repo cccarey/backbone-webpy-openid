@@ -44,15 +44,17 @@ These notes leverage Apache as a web server and assume Apache and MySQL Server i
 
         sudo service apache2 restart
 
-- Finally, create the shell script `services/setgoogleenv.sh` with your Google OAuth2 key and secret to start the webpy development server for services with the following contents:
+- Finally, create the shell script `services/setgoogleenv.sh` with your Google OAuth2 key and secret to start the webpy development server for services with the following contents. _Note the `PATH_PREFIX` variable inserted for the complete login path. See services/app/social_app.py for more information:
 
         #!/usr/bin/env bash
 
         GOOGLE_OAUTH2_KEY="REPLACE_WITH_YOUR_KEY"
         GOOGLE_OAUTH2_SECRET="REPLACE_WITH_YOUR_SECRET"
+        PATH_PREFIX="/backbone-webpy-openid-api"
 
         export GOOGLE_OAUTH2_KEY
         export GOOGLE_OAUTH2_SECRET
+        export PATH_PREFIX
 
         ./code.py 8082
 
