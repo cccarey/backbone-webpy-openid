@@ -21,12 +21,8 @@ These notes leverage Apache as a web server and assume Apache and MySQL Server i
 
 - Install python packages using pip
 
-        pip install mysql-python
-        pip install web.py
-        pip install python-openid
-        pip install requests-oauthlib
-        pip install python-social-auth
-        pip install sqlalchemy
+        pip install mysql-python web.py python-openid requests-oauthlib \
+            python-social-auth sqlalchemy
 
 - Enable proxy\_http module:
 
