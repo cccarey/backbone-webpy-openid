@@ -1,13 +1,15 @@
 require.config({
     paths: {
         jquery: 'lib/jquery-2.1.1',
-        text: 'lib/text'
+        text: 'lib/text',
+        bootstrap: 'lib/bootstrap'
     },
 
     shim: {
         'lib/underscore': { exports: '_' },
         'lib/backbone': { deps: [ 'jquery', 'lib/underscore' ], exports: 'Backbone' },
-        'lib/handlebars': { exports: 'Handlebars' }
+        'lib/handlebars': { exports: 'Handlebars' },
+        'lib/bootstrap': { deps: [ 'jquery'] }
     }
 });
 

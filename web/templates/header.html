@@ -1,19 +1,35 @@
-<span id="version">{{#info}}{{#attributes}}{{version}}{{/attributes}}{{/info}}</span>
-<span id="title">{{title}}</span>
-<span id="top-nav"></span>
-{{#user}}
-{{#attributes}}
-<span id="user-info">
-    {{#if username}}
-        {{#if nick_name}}
-            <span id="first-name">{{nick_name}}</span>
-        {{else}}
-            <span id="first-name">{{first_name}}</span>
-        {{/if}}
-        | <a id="logout" href="#/logout">logout</a>
-        | <a id="edit" href="#/edit">edit</a>
-    {{/if}}
-</span>
-{{/attributes}}
-{{/user}}
-
+<div class="container">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#"><span id="title">{{title}}</span></a>
+        <!-- <p id="version" class="text-muted">{{#info}}{{#attributes}}{{version}}{{/attributes}}{{/info}}</p> -->
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar-main">
+        <ul class="nav navbar-nav">
+            <span id="top-nav"></span>
+            {{#user}}
+            {{#attributes}}
+            <!-- <span id="user-info"> -->
+                {{#if username}}
+                    <li class="active">
+                        <a id="first-name" href="#/edit">
+                        {{#if nick_name}}
+                            {{nick_name}}
+                        {{else}}
+                            {{first_name}}
+                        {{/if}}
+                        </a>
+                    </li>
+                    <li><a id="logout" href="#/logout">logout</a></li>
+                    <li><a id="edit" href="#/edit">edit</a></li>
+                {{/if}}
+            <!-- </span> -->
+            {{/attributes}}
+            {{/user}}
+        </ul>
+    </div>
+</div>
