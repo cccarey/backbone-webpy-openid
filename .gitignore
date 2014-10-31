@@ -3,3 +3,4 @@ services/sessions
 services-new/sessions
 setgoogleenv.sh
 env
+*.sublime-*
