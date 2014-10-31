@@ -1,20 +1,12 @@
 #!/usr/bin/env bash
 
-if [ ! -z "$1" ]
-then
-    TARGET="$1"
-else
-    TARGET="/tmp/app-test"
-fi
+TARGET="/tmp/app-test"
+[[ ! -z "$1" ]] && TARGET="$1"
 
-if [ ! -d "$TARGET" ]
-then
-    mkdir "$TARGET"
-fi
+[[ ! -d "$TARGET" ]] && mkdir "$TARGET"
 
 cp -r services "$TARGET"
-
 cp -r web "$TARGET"
 
-rm -f `find "$TARGET" -name "*.pyc"`
-
+find "$TARGET" -name "*.pyc" -exec rm -f {} \;
+find "$TARGET" -name "setgoogleenv.sh" -exec rm -f {} \;
