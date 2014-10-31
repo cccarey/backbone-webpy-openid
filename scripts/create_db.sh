@@ -12,11 +12,11 @@ DBPASSCHK="check"
     DBPASSCHK="$3"
 }
 
-[[ -z "$DBNAME" ]] || {
+[[ -z "$DBNAME" ]] && {
     echo -n "Enter db name    : "
     read DBNAME
 }
-[[ -z "$DBUSER" ]] || {
+[[ -z "$DBUSER" ]] && {
     echo -n "Enter db user    : "
     read DBUSER
 }
