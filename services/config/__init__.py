@@ -31,7 +31,7 @@ engine = create_engine(
 	)
 
 settings = {
-    "version": "v2014228",
+    "version": "v2015060",
     "app": "/openid",
     "profile.edit": "/openid",
     "basedir": "/openid"
