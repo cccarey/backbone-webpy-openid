@@ -5,10 +5,11 @@ define([
     'lib/handlebars',
     'views/main_layout',
     'views/header',
+    'views/footer',
     'views/login',
     'views/user',
     'views/user_edit'
-], function($, _, Backbone, Handlebars, mainLayout, header, loginPage, userPage, userEditPage) {
+], function($, _, Backbone, Handlebars, mainLayout, header, footer, loginPage, userPage, userEditPage) {
     'use strict';
 
     Backbone.View.prototype.close = function() {
@@ -50,6 +51,7 @@ define([
     return { 
         mainLayout: mainLayout, 
         header: header, 
+        footer: footer,
         loginPage: loginPage, 
         userPage: userPage, 
         userEditPage: userEditPage 

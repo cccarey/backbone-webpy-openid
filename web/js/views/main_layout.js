@@ -5,8 +5,9 @@ define([
     'lib/handlebars',
     'config',
     'views/header',
+    'views/footer',
     'text!../../templates/main_layout.html',
-], function($, _, Backbone, Handlebars, config, header, mainLayoutTemplate) {
+], function($, _, Backbone, Handlebars, config, header, footer, mainLayoutTemplate) {
     'use strict';
     
     var template = Handlebars.compile(mainLayoutTemplate);
@@ -23,6 +24,7 @@ define([
 
             this.render();
             this.header = new header({ info: this.info, user: this.user, pageInfo: this.pageInfo });
+            this.footer = new footer({ model: this.info });
         },
         
         render: function() {
