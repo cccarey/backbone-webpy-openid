@@ -2,10 +2,11 @@ define([
     'jquery',
     'lib/underscore',
     'lib/backbone',
+    'lib/bootstrap',
     'config',
     'views/loader',
     'models/loader'
-], function($, _, Backbone, config, views, models) {
+], function($, _, Backbone, bootstrap, config, views, models) {
     'use strict';
 
     return {
