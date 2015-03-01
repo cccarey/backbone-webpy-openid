@@ -100,7 +100,8 @@ Provides basic application information. Sample:
                 "social_auth_last_login_backend": "google-oauth2", 
                 "ip": "127.0.0.1", 
                 "session_id": "58c539a9e3a50d5d165139399f6dbea709943196", 
-                "logged_in": true}
+                "logged_in": true
+            }
         }
 
 ### /user - GET
