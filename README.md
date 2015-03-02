@@ -40,7 +40,7 @@ These notes leverage Apache as a web server and assume Apache and MySQL Server i
 
         sudo service apache2 restart
 
-- Finally, create the shell script `services/setgoogleenv.sh` with your Google OAuth2 key and secret to start the webpy development server for services with the following contents. _Note the `PATH_PREFIX` variable inserted for the complete login path. See services/app/social_app.py for more information_:
+- Finally, create the shell script `services/start-dev.sh` with your Google OAuth2 key and secret to start the webpy development server for services with the following contents. _Note the `PATH_PREFIX` variable inserted for the complete login path. See services/app/social_app.py for more information_:
 
         #!/usr/bin/env bash
 

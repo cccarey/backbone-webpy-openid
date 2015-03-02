@@ -1,6 +1,6 @@
 *.pyc
 services/sessions
 services-new/sessions
-setgoogleenv.sh
+start-dev.sh
 env
 *.sublime-*
